@@ -10,7 +10,7 @@ namespace TranslateApp.Controllers
     [Route("[controller]")]
     public class TranslateController : ControllerBase
     {
-        SqlConnection con = new SqlConnection("server=DESKTOP-GIE55NI; database=TranslatorTable; Uid=auth_windows");
+        SqlConnection con = new SqlConnection("server=DESKTOP-GIE55NI;database=Translate;Integrated Security=SSPI");
         private readonly ILogger<TranslateController> _logger;
 
         public TranslateController(ILogger<TranslateController> logger)
@@ -26,7 +26,7 @@ namespace TranslateApp.Controllers
             sqlDataAdapter.Fill(dt);
             if(dt.Rows.Count > 0)
             {
-                return "very good";
+                return JsonConvert.SerializeObject(dt);
 
             }
 
